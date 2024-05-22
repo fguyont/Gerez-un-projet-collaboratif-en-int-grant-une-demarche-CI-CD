@@ -60,8 +60,7 @@ jobs:
       
     - name: Frontend test
       working-directory: ./front
-      #run: npm test
-      run: npm test --browsers=ChromeHeadless --progress=false --watch=false --code-coverage --source-map=false
+      run: npm test
       
     - name: Frontend test results upload
       uses: actions/upload-artifact@v4
