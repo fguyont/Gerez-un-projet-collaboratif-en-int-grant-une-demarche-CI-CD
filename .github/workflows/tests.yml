@@ -1,0 +1,36 @@
+name: Test workflow
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, reopened, edited, synchronize]
+
+jobs:
+  backend-test:
+    runs-on: windows-latest
+
+    steps:
+      - name : Repository checkout
+        uses: actions/checkout@v4
+
+      - name: Java 11 setup      
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '11'
+
+      - name: Backend project build
+        working-directory: ./back
+        run: mvn clean install
+
+      - name: Backend test
+        working-directory: ./back
+        run: mvn test
+
+      - name: Backend test results upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: Backend-test-report
+          path: ./back/target/site/jacoco/
