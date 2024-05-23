@@ -9,7 +9,7 @@ on:
 
 jobs:
   backend-test:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
       - name : Repository checkout
@@ -37,7 +37,7 @@ jobs:
 
 
   frontend-test:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
     - name : Repository checkout
@@ -60,7 +60,8 @@ jobs:
       
     - name: Frontend test
       working-directory: ./front
-      run: npm test
+      #run: npm test
+      run: npm test -- --watch=false --browsers=ChromeHeadless --code-coverage
       
     - name: Frontend test results upload
       uses: actions/upload-artifact@v4
