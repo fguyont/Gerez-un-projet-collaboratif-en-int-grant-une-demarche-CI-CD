@@ -60,7 +60,7 @@ jobs:
       
     - name: Frontend test
       working-directory: ./front
-      run: npm test -- --browsers=ChromeHeadless --watch=false --code-coverage
+      run: ng test --browsers=ChromeHeadless --watch=false --code-coverage
       
     - name: Frontend test results upload
       uses: actions/upload-artifact@v4
