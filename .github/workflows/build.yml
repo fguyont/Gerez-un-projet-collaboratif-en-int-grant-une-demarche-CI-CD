@@ -64,7 +64,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=fguyont_Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD
+        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=fguyont_Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD_back
 
   frontend-test:
     runs-on: ubuntu-latest
@@ -111,7 +111,7 @@ jobs:
         projectBaseDir: ./front
         args: >
           -Dsonar.organization=fguyont
-          -Dsonar.projectKey=fguyont_Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD
+          -Dsonar.projectKey=fguyont_Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD_front
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
