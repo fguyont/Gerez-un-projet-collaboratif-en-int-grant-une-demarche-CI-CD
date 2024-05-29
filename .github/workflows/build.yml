@@ -108,7 +108,7 @@ jobs:
     - name: SonarCloud Scan
       uses: sonarsource/sonarcloud-github-action@v2.2.0 # Ex: v2.1.0, See the latest version at https://github.com/marketplace/actions/sonarcloud-scan
       with:
-        projectBaseDir: .
+        projectBaseDir: ./front
         args: >
           -Dsonar.organization=fguyont
           -Dsonar.projectKey=fguyont_Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD
