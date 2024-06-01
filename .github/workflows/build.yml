@@ -39,6 +39,8 @@ jobs:
 
   backend-analyse:
       runs-on: ubuntu-latest
+      needs:
+      - backend-test
       
       steps:
       
@@ -108,6 +110,8 @@ jobs:
 
   frontend-analyse:
     runs-on: ubuntu-latest
+    needs:
+      - frontend-test
     
     steps:
 
@@ -129,9 +133,7 @@ jobs:
   deployment:
     runs-on: ubuntu-latest
     needs:
-      - backend-test
       - backend-analyse
-      - frontend-test
       - frontend-analyse
       
     steps:
