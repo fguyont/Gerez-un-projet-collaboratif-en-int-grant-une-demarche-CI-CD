@@ -142,6 +142,7 @@ jobs:
         args: >
           -Dsonar.organization=fguyont
           -Dsonar.projectKey=fguyont_Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD_front
+          -Dsonar.javascript.lcov.reportPaths=./coverage/bobapp/lcov.info
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
