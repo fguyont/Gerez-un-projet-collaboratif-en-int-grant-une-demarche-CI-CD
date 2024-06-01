@@ -73,13 +73,15 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=fguyont_Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD_back
 
-  frontend-test:
+  frontend-test-and-analyse:
     runs-on: ubuntu-latest
 
     steps:
     
     - name : Repository checkout
       uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
       
     - name: Use Node.js
       uses: actions/setup-node@v4
@@ -106,16 +108,6 @@ jobs:
         name: frontend-test-report
         path: ./front/coverage/bobapp/
 
-  frontend-analyse:
-    runs-on: ubuntu-latest
-    
-    steps:
-
-    - name : Repository checkout
-      uses: actions/checkout@v4
-      with:
-        fetch-depth: 0
-        
     - name: SonarCloud Scan
       uses: sonarsource/sonarcloud-github-action@v2.2.0
       with:
@@ -135,9 +127,8 @@ jobs:
     runs-on: ubuntu-latest
     needs:
       - backend-test
-      - frontend-test
+      - frontend-test-and-analyse
       - backend-analyse
-      - frontend-analyse
       
     steps:
       
